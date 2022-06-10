@@ -57,9 +57,11 @@ Page({
         wx.showToast({
             title:'登录成功',
         })
-        wx.switchTab({
+        
+        wx.reLaunch({
           url: '/pages/personal/personal',
         })
+        wx.setStorageSync("userInfo",JSON.stringify(result.profile))
     }
     else if(result.code==400){
         wx.showToast({
@@ -79,6 +81,9 @@ Page({
             icon:'none'
         })
     }
+    
+     
+
 
     
     },

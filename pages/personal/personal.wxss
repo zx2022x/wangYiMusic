@@ -48,7 +48,7 @@
     position: relative;
     display: flex;
     flex-direction: column;
-  // background: linear-gradient(left, red, black);
+ 
     background: rgba(0, 0, 0, .7);
     height: 240rpx;
     color: #f7d680;
@@ -104,6 +104,17 @@
   .vip-card-box .tit .iconfont{
     color: #f6e5a3;
     margin-right: 16rpx;
+  }
+  .recentScroll{
+       display:flex;
+       height: 200rpx;
+
+  }
+  .recentScroll image{
+      width: 200rpx;
+      height: 200rpx;
+      border-radius:10rpx;
+      margin-right:20rpx;
   }
   
   

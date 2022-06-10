@@ -1,7 +1,9 @@
 // pages/personal/personal.js
+import request from '../../utils/requests'
 let startY=0
 let moveY=0
 let moveDistance=0
+
 Page({
 
     /**
@@ -9,8 +11,9 @@ Page({
      */
     data: {
          coverTransform:'translateY(0)',
-         coverTransition:''
-
+         coverTransition:'',
+         userInfo:{},
+         recentPlayList:[],
     },
     handleTouchStart(event){
         startY=event.touches[0].clientY
@@ -47,9 +50,31 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
+           let userInfo=wx.getStorageSync('userInfo')
+           console.log(userInfo)
+           if(userInfo){
+               this.setData({
+                userInfo:JSON.parse(userInfo)
+               })
+               this.getUserRecentPlayList(this.data.userInfo.userId)
+           }
 
     },
+    //获取用户播放记录的功能函数
+   async getUserRecentPlayList(userId){
+      let recentPlayListData=await request(`/user/record?uid=${userId}&type=0`)
+    //   console.log("sjsdjs")
+    //   console.log(recentPlayListData)
+       let index=0
+       let recentPlayList=recentPlayListData.allData.splice(0,10).map(item=>{
+           item.id=index++
+           return item;
+       })
 
+      this.setData({
+        recentPlayList,
+      })
+    },
 
     /**
      * 生命周期函数--监听页面初次渲染完成
