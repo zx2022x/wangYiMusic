@@ -1,0 +1,25 @@
+<!--components/musicSwiper/musicSwiper.wxml-->
+<view class="right">
+<swiper class="swiper" circular next-margin="47rpx">
+
+<swiper-item class="swiperItem" wx:for="{{topList}}" wx:key="name">
+<view class="swiperItem1">
+<text class="bd">{{item.name}}</text>
+
+<view class="songList" wx:for="{{item.tracks}}" wx:key="id" wx:for-item="musicItem" >
+<image src="{{musicItem.al.picUrl}}" ></image>
+<text class="count">{{index+1}}</text>
+<text class="songName">{{musicItem.al.name}}</text>
+</view>
+
+</view>
+</swiper-item>
+
+
+
+
+
+
+
+</swiper>
+</view>
