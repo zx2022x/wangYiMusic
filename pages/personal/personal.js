@@ -51,7 +51,7 @@ Page({
      */
     onLoad(options) {
            let userInfo=wx.getStorageSync('userInfo')
-           console.log(userInfo)
+        //    console.log(userInfo)
            if(userInfo){
                this.setData({
                 userInfo:JSON.parse(userInfo)

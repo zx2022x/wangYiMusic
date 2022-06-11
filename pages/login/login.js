@@ -12,7 +12,7 @@ Page({
     handleInput(event){
         //    console.log(event)
         let type=event.currentTarget.id
-        console.log(type,event.detail.value)
+        // console.log(type,event.detail.value)
         this.setData({
             [type]:event.detail.value
         })
@@ -50,7 +50,7 @@ Page({
     //    })
 
        //后端验证
-       let result=await request(`/login/cellphone?phone=${phone}&password=${password}`)
+       let result=await request(`/login/cellphone`,{phone,password,isLogin:true})
     //    console.log(`/login/cellphone?phone=${phone}&password=${password}`)
     //    console.log(result)
     if(result.code==200){
